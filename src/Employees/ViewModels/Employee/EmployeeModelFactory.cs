@@ -4,17 +4,17 @@ using ExtCore.Data.Abstractions;
 
 namespace Employees.ViewModels.Employee
 {
-    internal class EmpIndexViewModelFactory
+    internal class EmployeeModelFactory
     {
-        public EmpIndexViewModelFactory()
+        public EmployeeModelFactory()
         {
         }
 
-        internal EmpIndexViewModel Create(IStorage storage)
+        internal EmpIndexViewModel LoadAll(IStorage storage, int page, int size)
         {
             var employeeRepo = storage.GetRepository<IEmployeeRepository>();
 
-            return new EmpIndexViewModel(employeeRepo.All());
+            return new EmpIndexViewModel(employeeRepo.All(page, size));
         }
     }
 }
